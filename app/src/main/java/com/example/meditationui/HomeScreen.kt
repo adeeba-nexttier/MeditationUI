@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -30,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import com.example.meditationui.ui.theme.ButtonBlue
 import com.example.meditationui.ui.theme.DarkerButtonBlue
 import com.example.meditationui.ui.theme.DeepBlue
+import com.example.meditationui.ui.theme.LightRed
 import com.example.meditationui.ui.theme.TextWhite
 
 @Preview
@@ -42,6 +44,7 @@ fun HomeScreen() {
         Column {
             GreetingSection()
             ChipSection(chips = listOf("Sweet Sleep", "Insomnia", "Depression"))
+            CurrentMeditation()
         }
         // Bottom Navigation View
     }
@@ -64,12 +67,10 @@ fun GreetingSection(
             Text(
                 text = "Good Morning, $name",
                 style = MaterialTheme.typography.headlineMedium,
-                color = Color.White
             )
             Text(
                 text = "We wish you a good day!",
                 style = MaterialTheme.typography.bodyMedium,
-                color = Color.Gray
             )
         }
         Icon(
@@ -107,6 +108,48 @@ fun ChipSection(
                 Text(text = chips[it], color = TextWhite)
 
             }
+        }
+    }
+}
+
+@Composable
+fun CurrentMeditation(
+    color: Color = LightRed
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+            .padding(15.dp)
+            .clip(RoundedCornerShape(10.dp))
+            .background(color)
+            .padding(horizontal = 15.dp, vertical = 20.dp)
+            .fillMaxWidth()
+    ) {
+        Column {
+            Text(
+                text = "Daily Thought",
+                style = MaterialTheme.typography.headlineMedium,
+            )
+            Text(
+                text = "Meditation * 3-10 min",
+                style = MaterialTheme.typography.bodyMedium,
+            )
+        }
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
+                .background(ButtonBlue)
+                .padding(10.dp)
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_play),
+                contentDescription = "Play",
+                tint = Color.White,
+                modifier = Modifier.size(16.dp)
+            )
         }
     }
 }

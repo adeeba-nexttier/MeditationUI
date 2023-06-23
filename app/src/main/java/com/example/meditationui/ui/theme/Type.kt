@@ -36,6 +36,6 @@ val Typography = Typography(
         color = TextWhite,
         fontFamily = gothicA1,
         fontWeight = FontWeight.Bold,
-        fontSize = 18.sp
+        fontSize = 16.sp
     )
 )

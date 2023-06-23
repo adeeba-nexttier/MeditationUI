@@ -1,5 +1,7 @@
 package com.example.meditationui
 
+import android.content.res.Configuration
+import android.content.res.Configuration.UI_MODE_NIGHT_MASK
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -60,12 +62,13 @@ import com.example.meditationui.ui.theme.OrangeYellow2
 import com.example.meditationui.ui.theme.OrangeYellow3
 import com.example.meditationui.ui.theme.TextWhite
 
-@Preview
+@Preview(uiMode = Configuration.UI_MODE_TYPE_NORMAL)
 @Composable
 fun HomeScreen() {
     Box(modifier = Modifier
         .background(DeepBlue)
-        .fillMaxSize()
+        .fillMaxSize(),
+     //   contentAlignment = Alignment.BottomCenter
     ) {
         Column {
             GreetingSection()
@@ -110,7 +113,7 @@ fun HomeScreen() {
             BottomMenuContent("Music", R.drawable.ic_music),
             BottomMenuContent("Profile", R.drawable.ic_profile)
         ),
-        modifier = Modifier.align(Alignment.BottomCenter)
+            modifier = Modifier.align(Alignment.BottomCenter)
         )
     }
 }
@@ -130,7 +133,7 @@ fun BottomMenu(
     Row (
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .background(DeepBlue)
             .padding(15.dp)
